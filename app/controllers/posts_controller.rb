@@ -16,7 +16,9 @@ class PostsController < ApplicationController
     @post = current_user.posts.find(params[:id])
     @post.destroy
 
-    redirect_to posts_path
+    # redirect_to posts_path
+    # render :js => "alert('ok');"
+    # destroy.js.erb
   end
 
   protected
