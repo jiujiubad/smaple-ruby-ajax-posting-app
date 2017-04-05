@@ -12,3 +12,5 @@
     <%= render :partial => "post", :locals => { :post => post } %>
   <% end %>
 </div>
+
+<p><%= link_to "More...", posts_path( :max_id => @posts.last.id ), :remote => true, :class => "btn btn-primary btn-lg", :id => "more-link" %></p>
