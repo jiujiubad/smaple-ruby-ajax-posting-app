@@ -15,6 +15,20 @@ class PostsController < ApplicationController
     end
   end
 
+  def toggle_flag
+    @post = Post.find(params[:id])
+
+    if @post.flag_at
+      @post.flag_at = nil
+    else
+      @post.flag_at = Time.now
+    end
+
+    @post.save!
+
+    render :json => { :message => "ok", :flag_at => @post.flag_at }
+  end
+
   def like
     @post = Post.find(params[:id])
     unless @post.find_like(current_user)

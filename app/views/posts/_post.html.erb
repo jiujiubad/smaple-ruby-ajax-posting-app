@@ -17,6 +17,13 @@
       <%= link_to "Delete", post_path(post), :method => :delete, :class => "btn btn-danger", :remote => true %>
     <% end %>
 
+    <% if current_user && current_user.is_admin? %>
+      <label>
+      <%= check_box_tag "mark_flag", toggle_flag_post_path(post), post.flag_at.present?, :class => "toggle_flag" %> 標記為垃圾
+        <span><%= post.flag_at %></span>
+      </label>
+    <% end %>
+
     </div>
   </div>
 </div>
