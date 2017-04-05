@@ -32,7 +32,7 @@
     }
   })
 
-  $(".toggle_flag").bind('change', function(){
+  $("#post-list").on('change', ".toggle_flag",function(){
     var that = this;
 
     $.ajax({
