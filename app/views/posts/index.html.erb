@@ -34,9 +34,10 @@
 
   $("#post-list").on('change', ".toggle_flag",function(){
     var that = this;
+    var url = $(this).data("url");
 
     $.ajax({
-      url: this.value,
+      url: url,
       method: "POST",
       dataType: "json",
       success: function(data){
@@ -48,5 +49,6 @@
       }
     });
   });
+
 
 </script>

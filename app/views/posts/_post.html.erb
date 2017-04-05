@@ -19,7 +19,7 @@
 
     <% if current_user && current_user.is_admin? %>
       <label>
-      <%= check_box_tag "mark_flag", toggle_flag_post_path(post), post.flag_at.present?, :class => "toggle_flag" %> 標記為垃圾
+      <%= check_box_tag "mark_flag", 1, post.flag_at.present?, :data => { :url => toggle_flag_post_path(post) }, :class => "toggle_flag" %> 標記為垃圾
         <span><%= post.flag_at %></span>
       </label>
     <% end %>
