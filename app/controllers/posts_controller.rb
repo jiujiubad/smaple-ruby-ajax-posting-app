@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, :only => [:create, :destroy]
 
   def index
-    @posts = Post.order("id DESC").limit(20)
+    @posts = Post.order("id DESC").limit(10)
 
     if params[:max_id]
       @posts = @posts.where( "id < ?", params[:max_id])

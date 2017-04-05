@@ -1,7 +1,8 @@
 <% @posts.each do |post| %>
+$("#post-list").append("<hr>")
 $("#post-list").append("<%=j render :partial => "post", :locals => { :post => post } %>");
 <% end %>
 
 <% if @posts.any? %>
-$("#more-link").attr("href", "/posts?max_id=" + <%= @posts.last.id %>)
+var current_max_id = <%= @posts.last.id %>;
 <% end %>
