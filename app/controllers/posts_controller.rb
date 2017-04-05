@@ -26,7 +26,7 @@ class PostsController < ApplicationController
 
     @post.save!
 
-    render :json => { :message => "ok", :flag_at => @post.flag_at }
+    render :json => { :message => "ok", :id => @post.id, :flag_at => @post.flag_at }
   end
 
   def like

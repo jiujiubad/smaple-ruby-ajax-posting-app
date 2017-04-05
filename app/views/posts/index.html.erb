@@ -33,7 +33,7 @@
   })
 
   $("#post-list").on('change', ".toggle_flag",function(){
-    var that = this;
+    //var that = this;
     var url = $(this).data("url");
 
     $.ajax({
@@ -42,9 +42,11 @@
       dataType: "json",
       success: function(data){
         if ( data["flag_at"] ) {
-          $(that).closest("label").find("span").html(data["flag_at"])
+          //$(that).closest("label").find("span").html(data["flag_at"])
+          $("#post-flag-" + data["id"]).html(data["flag_at"]);
         } else {
-          $(that).closest("label").find("span").html("")
+          //$(that).closest("label").find("span").html("")
+          $("#post-flag-" + data["id"]).html("");
         }
       }
     });
