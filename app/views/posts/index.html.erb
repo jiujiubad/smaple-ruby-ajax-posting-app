@@ -22,7 +22,10 @@
     $.ajax({
       url: url,
       method: 'DELETE',
-      dataType: 'script'
+      dataType: 'json',
+      success: function(data){
+        $("#post-" + data["id"]).remove();
+      }
     })
     //return false;
   })
