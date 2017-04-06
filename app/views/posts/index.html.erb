@@ -14,7 +14,8 @@
 </div>
 
 <script>
-  $(".delete-post").click(function(e){
+  $("#post-list").on('click', ".delete-post",function(e){
+  //$(".delete-post").click(function(e){
     e.preventDefault();
     var url = $(this).attr("href");
 
