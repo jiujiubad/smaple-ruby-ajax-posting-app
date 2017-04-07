@@ -14,6 +14,7 @@
 </div>
 
 <script>
+
   $("#post-list").on('click', ".delete-post",function(e){
   //$(".delete-post").click(function(e){
     e.preventDefault();
@@ -47,6 +48,25 @@
       }
     }
   })
+
+
+  $("#post-list").on('change', ".select_category",function(){
+    var url = $(this).data("url");
+
+    $.ajax({
+      url: url,
+      method: "PATCH",
+      dataType: "json",
+      data: {
+        post: {
+          category_id: $(this).val()
+        }
+      },
+      success: function(data){
+        $("#post-" + data["id"]).animateCss("flash");
+      }
+    });
+  });
 
   $("#post-list").on('change', ".toggle_flag",function(){
     //var that = this;

@@ -16,14 +16,16 @@
     <% if current_user && post.user == current_user %>
       <%= link_to "Delete", post_path(post), :class => "delete-post btn btn-danger" %>
     <% end %>
-
+    </div>
+  </div>
+  <div class="panel-footer">
     <% if current_user && current_user.is_admin? %>
+      <%= select_tag "category_id[#{post.id}]", options_for_select(Category.all.map{ |x| [x.name, x.id]}, post.category_id), :data => { :url => post_path(post) }, :prompt => "請選擇分類", :class => "select_category" %>
+
       <label>
-      <%= check_box_tag "mark_flag", 1, post.flag_at.present?, :data => { :url => toggle_flag_post_path(post) }, :class => "toggle_flag" %> 標記為垃圾
+      <%= check_box_tag "mark_flag[#{post.id}]", 1, post.flag_at.present?, :data => { :url => toggle_flag_post_path(post) }, :class => "toggle_flag" %> 標記為垃圾
         <span id="post-flag-<%= post.id %>"><%= post.flag_at %></span>
       </label>
     <% end %>
-
-    </div>
   </div>
 </div>
