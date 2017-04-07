@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   has_many :scores, :class_name => "PostScore"
 
   def find_score(user)
-    self.scores.where( :user_id => user.id ).first
+    user && self.scores.where( :user_id => user.id ).first
   end
 
 
