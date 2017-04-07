@@ -52,6 +52,7 @@
 
   $("#post-list").on('change', ".select_category",function(){
     var url = $(this).data("url");
+    var that = this;
 
     $.ajax({
       url: url,
@@ -62,8 +63,14 @@
           category_id: $(this).val()
         }
       },
+      beforeSend: function(){
+        $(that).after( $(' <img src="/images/loading.gif" id="ajax-loading"> ') );
+      },
       success: function(data){
         $("#post-" + data["id"]).animateCss("flash");
+      },
+      complete: function(){
+        $("#ajax-loading").remove();
       }
     });
   });

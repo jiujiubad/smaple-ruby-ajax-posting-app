@@ -58,7 +58,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.update!( post_params )
-
+sleep(1)
     respond_to do |format|
       format.html { redirect_to post_path(@post) }
       format.json { render :json => { :id => @post.id, :message => "ok"} }
