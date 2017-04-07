@@ -19,13 +19,15 @@
   //$(".delete-post").click(function(e){
     e.preventDefault();
     var url = $(this).attr("href");
+    var that = this;
 
     $.ajax({
       url: url,
       method: 'DELETE',
       dataType: 'json',
       success: function(data){
-        $("#post-" + data["id"]).remove();
+        $(that).closest(".panel").remove();
+        //$("#post-" + data["id"]).remove();
       }
     })
     //return false;
